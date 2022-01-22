@@ -1,6 +1,10 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+var LC = "abcdefghijklmnopqrstuvwxyz"
+var UC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var Num = "0123456789"
+var Spec = "!@#$%^&*()+=:;./?<>~{}[]"
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -11,15 +15,25 @@ function writePassword() {
 }
 
 function generatePassword() {
+  var password = "";
+  var actualPassword = "";
    var char = prompt("How many characters would you like?");
+
+    if (isNaN(char)) {
+      alert("Please enter a number!")
+      return;
+    }
 
     if (char < 8) {
       alert("You need at least 8 characters!"); 
+      return;
     }
     else if (char > 128) {
       alert("Too many characters!");
-      
+      return;
     }
+
+    var length = char;
     
     var confirmLC = confirm("Would you like lowercase letters?");
 
@@ -28,6 +42,33 @@ function generatePassword() {
     var confirmNum = confirm("Would you like numbers?");
 
     var confirmSpec = confirm("Would you like special characters?")
+
+    if (confirmLC) {
+      password = password + LC;
+    }
+
+    if (confirmUC) {
+      password = password + UC;
+    }
+
+    if (confirmNum) {
+      password = password + Num;
+    }
+
+    if (confirmSpec) {
+      password = password + Spec;
+    }
+
+    if (!confirmLC && !confirmUC && !confirmNum & !confirmSpec) {
+      alert("You must choose at least one character type!");
+      generatePassword();
+    }
+    //set password length and randomize characters
+    for (var index = 0; index < length; index++) {
+    var randomIndex = Math.floor(Math.random() * password.length);
+    actualPassword += password.charAt(randomIndex);
+    }
+  return actualPassword
 }
 
 // Add event listener to generate button
