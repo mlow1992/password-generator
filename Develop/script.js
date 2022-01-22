@@ -1,6 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-
+// Character string variable definitions
 var LC = "abcdefghijklmnopqrstuvwxyz"
 var UC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var Num = "0123456789"
@@ -18,7 +18,7 @@ function generatePassword() {
   var password = "";
   var actualPassword = "";
    var char = prompt("How many characters would you like?");
-
+    // prompts for which password characters to include and how many
     if (isNaN(char)) {
       alert("Please enter a number!")
       return;
@@ -42,7 +42,9 @@ function generatePassword() {
     var confirmNum = confirm("Would you like numbers?");
 
     var confirmSpec = confirm("Would you like special characters?")
+    // end prompts
 
+    // construct character string
     if (confirmLC) {
       password = password + LC;
     }
@@ -63,6 +65,8 @@ function generatePassword() {
       alert("You must choose at least one character type!");
       generatePassword();
     }
+    // end character string construction
+    
     //set password length and randomize characters
     for (var index = 0; index < length; index++) {
     var randomIndex = Math.floor(Math.random() * password.length);
