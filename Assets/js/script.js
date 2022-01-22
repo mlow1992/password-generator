@@ -1,3 +1,4 @@
+alert("Welcome to Password Generator!")
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 // Character string variable definitions
